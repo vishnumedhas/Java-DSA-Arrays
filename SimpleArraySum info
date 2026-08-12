@@ -1,0 +1,488 @@
+1. Program starts at main()
+
+Java starts execution from:
+
+public static void main(String[] args)
+
+So the flow is:
+
+main()
+  ↓
+Scanner creation
+  ↓
+read n
+  ↓
+create List
+  ↓
+read elements into List
+  ↓
+call simpleArraySum()
+  ↓
+calculate sum
+  ↓
+return sum
+  ↓
+print result
+2. Scanner is created
+
+Execution reaches:
+
+Scanner sc = new Scanner(System.in);
+
+This creates the Scanner object.
+
+It allows us to read input from the keyboard.
+
+3. Read n
+
+Next:
+
+int n = sc.nextInt();
+
+Input:
+
+5
+
+So:
+
+n = 5
+
+Now the program knows:
+
+I need to read 5 numbers.
+
+4. Create the List
+
+Next:
+
+List<Integer> ar = new ArrayList<>();
+
+Initially:
+
+ar = []
+
+The list is empty.
+
+5. First for loop starts
+
+Now this executes:
+
+for (int i = 0; i < n; i++) {
+    ar.add(sc.nextInt());
+}
+
+Remember:
+
+n = 5
+
+So the loop runs while:
+
+i < 5
+First iteration
+
+Initially:
+
+i = 0
+
+Check:
+
+0 < 5 → true
+
+So enter the loop:
+
+ar.add(sc.nextInt());
+
+Input gives:
+
+10
+
+So:
+
+ar = [10]
+
+Then i++ happens:
+
+i = 1
+Second iteration
+
+Check:
+
+1 < 5 → true
+
+Read:
+
+20
+
+List becomes:
+
+ar = [10, 20]
+
+Then:
+
+i = 2
+Third iteration
+2 < 5 → true
+
+Read:
+
+30
+
+List:
+
+[10, 20, 30]
+
+Then:
+
+i = 3
+Fourth iteration
+3 < 5 → true
+
+Read:
+
+40
+
+List:
+
+[10, 20, 30, 40]
+
+Then:
+
+i = 4
+Fifth iteration
+4 < 5 → true
+
+Read:
+
+50
+
+List:
+
+[10, 20, 30, 40, 50]
+
+Then:
+
+i = 5
+Loop stops
+
+Now:
+
+i = 5
+
+Condition:
+
+5 < 5
+
+is:
+
+false
+
+Therefore the loop ends.
+
+At this point:
+
+n = 5
+
+ar = [10, 20, 30, 40, 50]
+6. Call the method
+
+Now execution reaches:
+
+int result = simpleArraySum(ar);
+
+This is very important.
+
+The program jumps from main() into simpleArraySum().
+
+The list:
+
+[10, 20, 30, 40, 50]
+
+is passed to:
+
+simpleArraySum(List<Integer> ar)
+
+So inside the method:
+
+ar = [10, 20, 30, 40, 50]
+7. simpleArraySum() starts
+
+First:
+
+int sum = 0;
+
+So:
+
+sum = 0
+8. Second for loop starts
+
+Now:
+
+for (int i = 0; i < ar.size(); i++) {
+    sum = sum + ar.get(i);
+}
+
+Our list has 5 elements.
+
+Therefore:
+
+ar.size()
+
+returns:
+
+5
+
+So the loop is effectively:
+
+for (int i = 0; i < 5; i++)
+9. First iteration
+
+Initially:
+
+i = 0
+sum = 0
+
+Condition:
+
+0 < 5 → true
+
+Execute:
+
+sum = sum + ar.get(i);
+
+Here:
+
+ar.get(0)
+
+means:
+
+Give me the element at index 0.
+
+Our list:
+
+Index:    0   1   2   3   4
+          ↓
+List:    10  20  30  40  50
+
+Therefore:
+
+ar.get(0) = 10
+
+So:
+
+sum = 0 + 10
+sum = 10
+
+Then:
+
+i++
+
+So:
+
+i = 1
+10. Second iteration
+
+Condition:
+
+1 < 5 → true
+
+Get:
+
+ar.get(1)
+
+which is:
+
+20
+
+Therefore:
+
+sum = 10 + 20
+sum = 30
+
+Then:
+
+i = 2
+11. Third iteration
+i = 2
+
+Get:
+
+ar.get(2) = 30
+
+Calculate:
+
+sum = 30 + 30
+sum = 60
+
+Then:
+
+i = 3
+12. Fourth iteration
+i = 3
+
+Get:
+
+ar.get(3) = 40
+
+Calculate:
+
+sum = 60 + 40
+sum = 100
+
+Then:
+
+i = 4
+13. Fifth iteration
+i = 4
+
+Get:
+
+ar.get(4) = 50
+
+Calculate:
+
+sum = 100 + 50
+sum = 150
+
+Then:
+
+i = 5
+14. Loop stops
+
+Condition:
+
+5 < 5
+
+is:
+
+false
+
+So the loop ends.
+
+Current value:
+
+sum = 150
+15. Return the answer
+
+Now:
+
+return sum;
+
+returns:
+
+150
+
+The method:
+
+simpleArraySum(ar)
+
+has finished.
+
+The program goes back to the exact place where the method was called in main():
+
+int result = simpleArraySum(ar);
+
+So now:
+
+result = 150
+16. Print the result
+
+Next:
+
+System.out.println(result);
+
+prints:
+
+150
+Complete control flow
+
+Think of the entire program like this:
+
+                 main()
+                   |
+                   ↓
+        Create Scanner object
+                   |
+                   ↓
+              Read n = 5
+                   |
+                   ↓
+           Create empty List
+                   |
+                   ↓
+          Read 5 elements
+                   |
+                   ↓
+       [10, 20, 30, 40, 50]
+                   |
+                   ↓
+       simpleArraySum(ar)
+                   |
+                   ↓
+             sum = 0
+                   |
+                   ↓
+             for loop
+                   |
+        ┌──────────┼──────────┐
+        ↓          ↓          ↓
+      get(0)     get(1)     get(2) ...
+       10          20          30
+        ↓          ↓          ↓
+      sum=10     sum=30     sum=60
+        ↓
+      get(3) = 40
+        ↓
+      sum=100
+        ↓
+      get(4) = 50
+        ↓
+      sum=150
+        ↓
+       return 150
+        ↓
+    back to main()
+        ↓
+   result = 150
+        ↓
+   print result
+        ↓
+       150
+The most important thing to understand
+
+There are two different loops doing two different jobs:
+
+First loop:
+
+for (int i = 0; i < n; i++) {
+    ar.add(sc.nextInt());
+}
+
+Its job is:
+
+Take input and put the numbers into the List.
+
+Second loop:
+
+for (int i = 0; i < ar.size(); i++) {
+    sum = sum + ar.get(i);
+}
+
+Its job is:
+
+Go through the List and calculate the sum.
+
+And the method call:
+
+simpleArraySum(ar)
+
+means:
+
+"Take this List and send it to the simpleArraySum method."
+
+Then:
+
+return sum;
+
+means:
+
+"I finished calculating. Send the answer back to main()."
